@@ -1,7 +1,8 @@
+<!-- === Randomly pick one ad from available Google or Amazon ads === -->
 <script setup>
   import { ref } from 'vue';
-  import AmazonBanner from '@/components/ads/Amazon/Banner.vue';
-  import GoogleAdSense from '@/components/ads/GoogleAdSense.vue';
+  import AmazonBanner from './Amazon/Banner.vue';
+  import GoogleAdSense from './Google/AdSense.vue';
 
   const numberOfAvailableAds = 3;
   const whichAdToShow = ref(Math.ceil(Math.random() * numberOfAvailableAds));
