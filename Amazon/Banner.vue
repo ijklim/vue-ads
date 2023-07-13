@@ -57,7 +57,6 @@
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 9px;
-  margin-bottom: 60px;
   width: calc(v-bind(width) * 1px);
 }
 </style>
