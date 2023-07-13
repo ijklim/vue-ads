@@ -15,6 +15,10 @@
       type: String,
       required: true,
     },
+    imageAltText: {
+      type: String,
+      default: '',
+    },
     width: {
       type: Number,
       default: 300,
@@ -28,6 +32,7 @@
     :href="href"
   >
     <img
+      :alt="imageAltText"
       :height="height"
       :src="image"
       :width="width"
