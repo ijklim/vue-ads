@@ -68,7 +68,7 @@
     if (whichAdToShow.adType === 'GoogleAdSense') {
       // Dynamically add GoogleAdSense script
       const script = document.createElement('script');
-      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3117776653960390';
+      script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${import.meta.env.VITE_AD_CLIENT}`;
       script.async = true;
       script.crossOrigin = 'anonymous';
       document.head.appendChild(script);
