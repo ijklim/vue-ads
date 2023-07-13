@@ -27,15 +27,37 @@
 </script>
 
 <template>
-  <a
-    target="_blank"
-    :href="href"
-  >
-    <img
-      :alt="imageAltText"
-      :height="height"
-      :src="image"
-      :width="width"
-    />
-  </a>
+  <div class="image-link">
+    <a
+      target="_blank"
+      :href="href"
+    >
+      <img
+        :alt="imageAltText"
+        :height="height"
+        :src="image"
+        :width="width"
+      />
+    </a>
+  </div>
+
+  <div class="disclaimer mx-auto">
+    Disclaimer: As an Amazon Associate I earn from qualifying purchases
+  </div>
 </template>
+
+<style scoped>
+.image-link {
+  /* 0 line-height removes gap between image and disclaimer */
+  line-height: 0px;
+}
+
+.disclaimer {
+  background-color: white;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  margin-bottom: 60px;
+  width: calc(v-bind(width) * 1px);
+}
+</style>

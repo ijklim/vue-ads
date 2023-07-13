@@ -27,7 +27,7 @@
     amazonPrimeStudent: {
       adType: 'AmazonBanner',
       href: 'https://amzn.to/3rplmNE',
-      imagePath: 'Amazon/1028240_student_v5_associate_300x250.jpg',
+      imagePath: 'Amazon/1028240_student_v5a_associate_300x250.jpg',
       imageAltText: 'Amazon Prime Student Offer',
       displayRatio: 1,
     },
