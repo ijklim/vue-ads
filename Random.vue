@@ -1,21 +1,19 @@
 <!-- === Randomly pick one ad from available Google or Amazon ads === -->
 <script setup>
+  import { onMounted } from 'vue';
   import AmazonBanner from './Amazon/Banner.vue';
   import GoogleAdSense from './Google/AdSense.vue';
 
-  const getImageUrl = (imagePath) => {
-    // Note: Path must start with a static folder (e.g. ./images/) for Vite to process the image in Production build
-    // https://vitejs.dev/guide/assets.html
-    const result = new URL(`./images/${imagePath}`, import.meta.url).href;
-    return result;
-  }
 
-  // === Ad Types that could be displayed ===
+  // === Data ===
+  /**
+   * Ad Types that could be displayed
+   */
   const ads = {
     googleInFeed: {
       adFormat: 'fluid',
       adLayoutKey: '-fb+5w+4e-db+86',
-      adSlot: '7471404401',
+      adSlot: 7471404401,
       adType: 'GoogleAdSense',
       displayRatio: 1,
     },
@@ -41,7 +39,7 @@
       displayRatio: 1,
     },
   };
-  // const whichAdToShow = ref(Math.ceil(Math.random() * numberOfAvailableAds));
+
   /**
    * Randomly pick an ad from `ads` considering displayRatio
    */
@@ -54,6 +52,28 @@
     const adKeySelected = availableAds[indexRandom];
     return ads[adKeySelected];
   })();
+
+
+  // === Methods ===
+  const getImageUrl = (imagePath) => {
+    // Note: Path must start with a static folder (e.g. ./images/) for Vite to process the image in Production build
+    // https://vitejs.dev/guide/assets.html
+    const result = new URL(`./images/${imagePath}`, import.meta.url).href;
+    return result;
+  }
+
+
+  // === Lifecycle Hooks ===
+  onMounted(() => {
+    if (whichAdToShow.adType === 'GoogleAdSense') {
+      // Dynamically add GoogleAdSense script
+      const script = document.createElement('script');
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3117776653960390';
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      document.head.appendChild(script);
+    }
+  });
 </script>
 
 <template>
