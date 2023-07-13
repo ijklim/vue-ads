@@ -13,6 +13,13 @@
       adType: 'GoogleAdSense',
       displayRatio: 2,
     },
+    amazonAudiblePlus: {
+      adType: 'AmazonBanner',
+      href: 'https://amzn.to/3DbXK1H',
+      image: '/images/Amazon/Minerva-Plus-Associate-300x250-V08.jpg',
+      imageAltText: 'Amazon Audible Plus Offer',
+      displayRatio: 1,
+    },
     amazonPrimeStudent: {
       adType: 'AmazonBanner',
       href: 'https://amzn.to/3rplmNE',
