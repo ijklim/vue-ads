@@ -1,8 +1,14 @@
 <!-- === Randomly pick one ad from available Google or Amazon ads === -->
 <script setup>
-  import { ref } from 'vue';
   import AmazonBanner from './Amazon/Banner.vue';
   import GoogleAdSense from './Google/AdSense.vue';
+
+  const getImageUrl = (imagePath) => {
+    // Note: Path must start with a static folder (e.g. ./images/) for Vite to process the image in Production build
+    // https://vitejs.dev/guide/assets.html
+    const result = new URL(`./images/${imagePath}`, import.meta.url).href;
+    return result;
+  }
 
   // === Ad Types that could be displayed ===
   const ads = {
@@ -11,26 +17,26 @@
       adLayoutKey: '-fb+5w+4e-db+86',
       adSlot: '7471404401',
       adType: 'GoogleAdSense',
-      displayRatio: 2,
+      displayRatio: 1,
     },
     amazonAudiblePlus: {
       adType: 'AmazonBanner',
       href: 'https://amzn.to/3DbXK1H',
-      image: '/images/Amazon/Minerva-Plus-Associate-300x250-V08.jpg',
+      imagePath: 'Amazon/Minerva-Plus-Associate-300x250-V08.png',
       imageAltText: 'Amazon Audible Plus Offer',
       displayRatio: 1,
     },
     amazonPrimeStudent: {
       adType: 'AmazonBanner',
       href: 'https://amzn.to/3rplmNE',
-      image: '/images/Amazon/1028240_student_v5_associate_300x250.jpg',
+      imagePath: 'Amazon/1028240_student_v5_associate_300x250.jpg',
       imageAltText: 'Amazon Prime Student Offer',
       displayRatio: 1,
     },
     amazonPrime: {
       adType: 'AmazonBanner',
       href: 'https://amzn.to/43sUolr',
-      image: '/images/Amazon/AssocAds_GleasonSVOD_300x250.jpg',
+      imagePath: 'Amazon/AssocAds_GleasonSVOD_300x250.jpg',
       imageAltText: 'Amazon Prime Offer',
       displayRatio: 1,
     },
@@ -48,8 +54,6 @@
     const adKeySelected = availableAds[indexRandom];
     return ads[adKeySelected];
   })();
-  console.log('remove: whichAdToShow', whichAdToShow);
-
 </script>
 
 <template>
@@ -65,7 +69,7 @@
   <AmazonBanner
     v-if="whichAdToShow.adType === 'AmazonBanner'"
     :href="whichAdToShow.href"
-    :image="whichAdToShow.image"
+    :image="getImageUrl(whichAdToShow.imagePath)"
     :imageAltText="whichAdToShow.imageAltText"
   />
 </template>
