@@ -1,6 +1,6 @@
 <!-- Doc: https://support.google.com/adsense/answer/9274025?sjid=15958214024945695758-NA -->
 <script setup>
-  import { defineProps, onMounted, ref } from 'vue';
+  import { onMounted, ref } from 'vue';
   import useUtility from '@/composables/useUtility.js';
 
 
