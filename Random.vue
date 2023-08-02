@@ -3,6 +3,7 @@
   import { onMounted } from 'vue';
   import AmazonBanner from './Amazon/Banner.vue';
   import GoogleAdSense from './Google/AdSense.vue';
+  import MochaHostBanner from './MochaHost/Banner.vue';
 
 
   // === Data ===
@@ -10,13 +11,7 @@
    * Ad Types that could be displayed
    */
   const ads = {
-    googleInFeed: {
-      adFormat: 'fluid',
-      adLayoutKey: '-fb+5w+4e-db+86',
-      adSlot: 7471404401,
-      adType: 'GoogleAdSense',
-      displayRatio: 1,
-    },
+    // === Amazon ===
     amazonAudiblePlus: {
       adType: 'AmazonBanner',
       href: 'https://www.amazon.com/dp/B00NB86OYE/?ref_=assoc_tag_ph_1485906643682&_encoding=UTF8&camp=1789&creative=9325&linkCode=pf4&tag=aimprove-20&linkId=837a9441c1d588564e1289af56177cff',
@@ -59,6 +54,20 @@
       imageAltText: 'Create an Amazon Wedding Registry',
       displayRatio: 1,
     },
+    // === Google AdSense ===
+    googleInFeed: {
+      adFormat: 'fluid',
+      adLayoutKey: '-fb+5w+4e-db+86',
+      adSlot: 7471404401,
+      adType: 'GoogleAdSense',
+      displayRatio: 1,
+    },
+    // === MochaHost ===
+    mochaHost: {
+      adType: 'MochaHostBanner',
+      href: 'https://affiliates.mochahost.com/idevaffiliate.php?id=6756&tid1=vueads',
+      displayRatio: 1,
+    },
   };
 
   /**
@@ -98,6 +107,14 @@
 </script>
 
 <template>
+  <!-- === Amazon Banner === -->
+  <AmazonBanner
+    v-if="whichAdToShow.adType === 'AmazonBanner'"
+    :href="whichAdToShow.href"
+    :image="getImageUrl(whichAdToShow.imagePath)"
+    :imageAltText="whichAdToShow.imageAltText"
+  />
+
   <!-- === Google AdSense === -->
   <GoogleAdSense
     v-if="whichAdToShow.adType === 'GoogleAdSense'"
@@ -106,11 +123,9 @@
     :adSlot="whichAdToShow.adSlot"
   />
 
-  <!-- === Amazon Banner === -->
-  <AmazonBanner
-    v-if="whichAdToShow.adType === 'AmazonBanner'"
+  <!-- === MochaHost === -->
+  <MochaHostBanner
+    v-if="whichAdToShow.adType === 'MochaHostBanner'"
     :href="whichAdToShow.href"
-    :image="getImageUrl(whichAdToShow.imagePath)"
-    :imageAltText="whichAdToShow.imageAltText"
   />
 </template>
