@@ -1,6 +1,6 @@
 <script setup>
   import { computed } from 'vue';
-  import { useDisplay } from 'vuetify';
+  import useDisplay from '../useDisplay.js';
 
 
   // === Composables ===
